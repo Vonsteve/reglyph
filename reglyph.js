@@ -25,8 +25,10 @@ function fontGetGlyphsIds(font) {
         glyphsIds = [];
     for (var index in glyphs) {
         g = glyphs[index];
-        if (typeof g.unicode !== "undefined") {
-            glyphsIds.push(g.unicode);
+        if (g.unicodes.length > 0) {
+            g.unicodes.forEach(function(code) {
+                glyphsIds.push(code)
+            });
         }
     }
     // Sort glyphsIds
