@@ -20,6 +20,8 @@ function fontLoad(path, callback) {
 
 function fontGetGlyphsIds(font) {
     // Get ids of displayable glyphs
+
+
     var glyphs = font.glyphs.glyphs,
         g,
         glyphsIds = [];
@@ -27,7 +29,7 @@ function fontGetGlyphsIds(font) {
         g = glyphs[index];
         if (g.unicodes.length > 0) {
             g.unicodes.forEach(function(code) {
-                glyphsIds.push(code)
+                if ((font.names.fontFamily.en === 'HYGothic-Medium' && lol.indexOf(toHexUnicode(code)) < 0) || font.names.fontFamily.en !== 'HYGothic-Medium') glyphsIds.push(code);
             });
         }
     }
@@ -167,3 +169,6 @@ if (!module.parent) {
     // Module usage
     module.exports = reglyph;
 }
+
+
+var lol = ['007F', '0080', '0090', '00C0', '00E0', '0081', '0091', '00C1', '00D1', '00E1', '00F1', '0082', '0092', '00A2', '00C2', '00D2', '00E2', '00F2', '0083', '0093', '00A3', '00C3', '00D3', '00E3', '00F3', '0084', '0094', '00C4', '00D4', '00E4', '00F4', '0085', '0095', '00A5', '00B5', '00C5', '00D5', '00E5', '00F5', '0086', '0096', '00A6', '00D6', '00F6', '0087', '0097', '00C7', '00E7', '0088', '0098', '00C8', '00E8', '0089', '0099', '00A9', '00C9', '00D9', '00E9', '00F9', '008A', '009A', '00CA', '00DA', '00EA', '00FA', '008B', '009B', '00AB', '00BB', '00CB', '00DB', '00EB', '00FB', '008C', '009C', '00AC', '00CC', '00DC', '00EC', '00FC', '008D', '009D', '00CD', '00DD', '00ED', '00FD', '008E', '009E', '00AE', '00CE', '00EE', '008F', '009F', '00AF', '00CF', '00EF', '00FF'];
